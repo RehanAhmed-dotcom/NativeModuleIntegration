@@ -1,0 +1,44 @@
+<!-- res/layout/notification_layout.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Add your content here, e.g., step count, calories, distance, time -->
+    <TextView
+        android:id="@+id/steps_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Steps: 0"
+        android:textSize="18sp"
+        android:textColor="#000000" />
+
+    <!-- Define IDs for other TextView elements -->
+    <TextView
+        android:id="@+id/calories_large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calories: 0.0"
+        android:textSize="18sp"
+        android:textColor="#000000" />
+
+    <!-- Define IDs for other TextView elements -->
+    <TextView
+        android:id="@+id/distance_large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Distance: 0.0"
+        android:textSize="18sp"
+        android:textColor="#000000" />
+
+    <!-- Define IDs for other TextView elements -->
+    <TextView
+        android:id="@+id/time_large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time: 00:00:00"
+        android:textSize="18sp"
+        android:textColor="#000000" />
+</LinearLayout>
