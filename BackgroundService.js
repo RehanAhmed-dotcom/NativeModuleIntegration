@@ -1,17 +1,7 @@
-import { NativeModules } from 'react-native';
+// import {NativeModules} from 'react-native';
 
-const { BackgroundService } = NativeModules;
-
-export default class BackgroundServiceModule {
-  static startService() {
-    BackgroundService.startService();
-  }
-
-  static stopService() {
-    BackgroundService.stopService();
-  }
-
-  static sendEvent(eventName, params) {
-    BackgroundService.sendEvent(eventName, params);
-  }
-}
+// const {BackGroundService} = NativeModules;
+// const {MyNativeModules} = NativeModules;
+// export const add = async (a, b) => {
+//   return await MyNativeModules.add(a, b);
+// };
