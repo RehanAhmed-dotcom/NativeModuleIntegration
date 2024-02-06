@@ -214,11 +214,11 @@ public class MyNativeModule extends ReactContextBaseJavaModule {
 //         callback.invoke(totalSteps);
 //     }
 @ReactMethod
-public void getTotalSteps() {
+public void getTotalSteps(Callback callback) {
     float totalSteps = backGroundService.getTotalSteps();
     // Toast.makeText(this, totalSteps, Toast.LENGTH_SHORT).show();
     // Send the totalSteps to the React Native side
-    sendEvent("onTotalStepsUpdate", totalSteps);
+    callback.invoke(totalSteps);
 }
     @ReactMethod
     public void isRunning(Callback callback) {
@@ -232,6 +232,21 @@ public void getTotalSteps() {
         BackGroundService backGroundService = new BackGroundService();
         String time = backGroundService.getTime();
         callback.invoke(time);
+    }
+    public void removeListener(String eventName) {
+        DeviceEventManagerModule.RCTDeviceEventEmitter listener = eventListeners.get(eventName);
+        if (listener != null) {
+            // listener.removeAllListeners(); // This removes all listeners for the emitter
+            eventListeners.remove(eventName);
+        }
+    }
+    private void sendEvent(String eventName, Object data) {
+        DeviceEventManagerModule.RCTDeviceEventEmitter listener =
+            eventListeners.get(eventName);
+
+        if (listener != null) {
+            listener.emit(eventName, data);
+        }
     }
     // @ReactMethod
     // public void isTime(Callback callback) {
@@ -262,21 +277,7 @@ public void getTotalSteps() {
     //         eventListeners.remove(eventName);
     //     }
     // }
-    public void removeListener(String eventName) {
-        DeviceEventManagerModule.RCTDeviceEventEmitter listener = eventListeners.get(eventName);
-        if (listener != null) {
-            // listener.removeAllListeners(); // This removes all listeners for the emitter
-            eventListeners.remove(eventName);
-        }
-    }
-    private void sendEvent(String eventName, Object data) {
-        DeviceEventManagerModule.RCTDeviceEventEmitter listener =
-            eventListeners.get(eventName);
-
-        if (listener != null) {
-            listener.emit(eventName, data);
-        }
-    }
+   
     // private void sendEvent(String eventName, Object data) {
     //     DeviceEventManagerModule.RCTDeviceEventEmitter listener =
     //         getReactApplicationContext().getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class);
